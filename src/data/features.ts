@@ -1,5 +1,3 @@
-import { ReactElement } from "react";
-
 export type Feature = {
   iconSrc: string;
   altText: string;

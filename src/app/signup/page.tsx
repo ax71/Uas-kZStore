@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 
 export default function RegisterPage() {
@@ -24,10 +23,8 @@ export default function RegisterPage() {
       email,
       password,
       options: {
-        // Data ini akan dikirim ke SQL Function kita
         data: {
           username: username,
-          // Anda bisa menambahkan full_name atau avatar_url di sini jika ada field-nya
         },
       },
     });
@@ -40,11 +37,9 @@ export default function RegisterPage() {
     }
 
     if (data.user) {
-      // Tampilkan pesan sukses. Supabase secara default mengirim email konfirmasi.
       setMessage(
         "Registration successful! Please check your email to confirm your account."
       );
-      // Kosongkan form setelah berhasil
       setEmail("");
       setPassword("");
       setUsername("");
@@ -54,7 +49,6 @@ export default function RegisterPage() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-900">
       <div className="relative flex w-full max-w-4xl mx-auto overflow-hidden bg-gray-800 rounded-lg shadow-xl">
-        {/* Kolom Kiri - Panel Visual */}
         <div className="relative hidden w-1/2 md:block">
           <Image
             src="/images/login/login-image.jpg"
@@ -73,7 +67,6 @@ export default function RegisterPage() {
           </div>
         </div>
 
-        {/* Kolom Kanan - Form Register */}
         <div className="w-full p-8 md:w-1/2 bg-gradient-to-br from-blue-500 to-blue-700">
           <h2 className="text-2xl font-bold text-white text-center">
             Create an Account
